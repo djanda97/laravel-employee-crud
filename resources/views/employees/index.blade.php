@@ -9,7 +9,7 @@
         a { text-decoration: none }
     </style> --}}
 
-    @if(count($employees) > 0)
+    {{-- @if(count($employees) > 0) --}}
         {{-- <script>
             // let employees = 
             const showTable = (employees) => {
@@ -44,13 +44,13 @@
                 @endforeach
             </tbody>
         </table>
-    @else
+    {{-- @else
         <p>No employees found.</p>
-    @endif
+    @endif --}}
 
     <script>
         let table = document.getElementById("employee-table");
-        for (var i = 0; i < table.rows.length; i++) {
+        for (let i = 0; i < table.rows.length; i++) {
             table.rows[i].addEventListener("click", function() {
                 location.href = "/employees/{{$employee->id}}";
             });

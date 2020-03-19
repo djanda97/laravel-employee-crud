@@ -41,6 +41,19 @@
         <table class="table table-hover table-bordered" id="employee-table-detailed">
             <script>showTable()</script> 
         </table>
+
+        <br />
+
+        <form action="/employees/{{$employee->id}}/edit" method="GET">
+            @csrf
+            <input type="hidden" value="{{$employee->id}}" name="id">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+
+        {{-- <form action="/employees/{{$employee->emp_id}}" method="PUT">
+            @csrf
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form> --}}
     @else
         <p>No employee found</p>
     @endif

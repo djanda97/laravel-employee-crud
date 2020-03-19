@@ -16,19 +16,51 @@
 
     <body>
         <div class="container">
-        {{-- <div> --}}
-            <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="/employees">Laravel Backend Case Study</a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/employees">
+                    Laravel Backend Case Study
+                </a>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="/employees/create">
+                            Add Employee
+                        </a>
+                    </div>
             </nav>
 
             <br />
 
-            <h2>@yield('tableName')</h2>
+            <h3>@yield('tableName')</h3>
 
             <br />
 
             @yield('content')
         </div>
+
+        {{-- <script>
+            const showFields = () => {
+                let labels = ["Emp ID", "Name Prefix", "First Name", "Middle Initial", "Last Name", "Gender", "E Mail", "Father's Name", "Mother's Name", "Mother's Maiden Name", "Date of Birth", "Date of Joining", "Salary", "SSN", "Phone No.", "City", "State", "Zip"]
+
+                let fields = ["emp_id", "name_prefix", "first_name", "middle_initial", "last_name", "gender", "email", "father_name", "mother_name", "mother_maiden_name", "date_of_birth", "date_of_joining", "salary", "ssn", "phone_no", "city", "state", "zip"];
+                
+                let form = document.getElementById("employee-form");
+
+                for (let i = 0; i < labels.length; i++) {
+                    let div = document.createElement("div");
+                    div.class = "form-group";
+                    let label = document.createTextNode(labels[i] + ":");
+                    div.appendChild(label);
+                    let br = document.createElement("br");
+                    div.appendChild(br);
+                    let input = document.createElement("input");
+                    input.type = "text";
+                    input.name = fields[i];
+                    input.id = fields[i];
+                    input.class = "form-control";
+                    div.appendChild(input);
+                    form.appendChild(div);
+                }
+            }
+        </script> --}}
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
