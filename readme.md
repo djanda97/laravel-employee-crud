@@ -45,6 +45,16 @@ Runs the migration to create the Employee database table.
 
 **# docker-compose exec app php artisan migrate**
 
+Creates a database seeder class called EmployeesTableSeeder.
+
+**# docker-compose exec app php artisan make:seeder EmployeesTableSeeder**
+
+Seeds the database.
+
+**# docker-compose exec app composer dump-autoload**
+
+**# docker-compose exec app php artisan db:seed**
+
 Creates an EmployeeController for CRUD functionality.
 
 **# docker-compose exec app php artisan make:controller EmployeeController --resource**
