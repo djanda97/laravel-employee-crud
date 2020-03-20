@@ -7,9 +7,47 @@
         </h3>
         <br />
         <script>
-            const labels = ["Emp ID", "Name Prefix", "First Name", "Middle Initial", "Last Name", "Gender", "E Mail", "Father's Name", "Mother's Name", "Mother's Maiden Name", "Date of Birth", "Date of Joining", "Salary", "SSN", "Phone No.", "City", "State", "Zip"];
-
-            const fields = ["emp_id", "name_prefix", "first_name", "middle_initial", "last_name", "gender", "email", "father_name", "mother_name", "mother_maiden_name", "date_of_birth", "date_of_joining", "salary", "ssn", "phone_no", "city", "state", "zip"];
+            const labels = [
+                "Emp ID",
+                "Name Prefix",
+                "First Name",
+                "Middle Initial",
+                "Last Name",
+                "Gender",
+                "E Mail",
+                "Father's Name",
+                "Mother's Name",
+                "Mother's Maiden Name",
+                "Date of Birth",
+                "Date of Joining",
+                "Salary",
+                "SSN",
+                "Phone No.",
+                "City",
+                "State",
+                "Zip"
+            ];
+            
+            const fields = [
+                "emp_id",
+                "name_prefix",
+                "first_name",
+                "middle_initial",
+                "last_name",
+                "gender",
+                "email",
+                "father_name",
+                "mother_name",
+                "mother_maiden_name",
+                "date_of_birth",
+                "date_of_joining",
+                "salary",
+                "ssn",
+                "phone_no",
+                "city",
+                "state",
+                "zip"
+            ];
             
             const data = [
                 "{{$employee->emp_id}}",

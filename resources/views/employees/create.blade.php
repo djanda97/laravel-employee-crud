@@ -5,11 +5,68 @@
     <br />
 
     <script>
-         let labels = ["Emp ID", "Name Prefix", "First Name", "Middle Initial", "Last Name", "Gender", "E Mail", "Father's Name", "Mother's Name", "Mother's Maiden Name", "Date of Birth", "Date of Joining", "Salary", "SSN", "Phone No.", "City", "State", "Zip"];
+        const labels = [
+            "Emp ID",
+            "Name Prefix",
+            "First Name",
+            "Middle Initial",
+            "Last Name",
+            "Gender",
+            "E Mail",
+            "Father's Name",
+            "Mother's Name",
+            "Mother's Maiden Name",
+            "Date of Birth",
+            "Date of Joining",
+            "Salary",
+            "SSN", 
+            "Phone No.",
+            "City",
+            "State",
+            "Zip"
+        ];
 
-        let fields = ["emp_id", "name_prefix", "first_name", "middle_initial", "last_name", "gender", "email", "father_name", "mother_name", "mother_maiden_name", "date_of_birth", "date_of_joining", "salary", "ssn", "phone_no", "city", "state", "zip"];
+        const fields = [
+            "emp_id",
+            "name_prefix",
+            "first_name",
+            "middle_initial",
+            "last_name",
+            "gender",
+            "email",
+            "father_name",
+            "mother_name",
+            "mother_maiden_name",
+            "date_of_birth",
+            "date_of_joining",
+            "salary",
+            "ssn",
+            "phone_no",
+            "city",
+            "state",
+            "zip"
+        ];
         
-        let validFormat = ["integer", "string", "alpha", "alpha", "alpha", "alpha", "email", "string", "string", "alpha", "date_format:n/j/Y", "date_format:n/j/Y", "integer", "alpha_dash", "alpha_dash", "alpha", "alpha", "integer"];
+        let validFormat = [
+            "integer",
+            "string",
+            "alpha",
+            "alpha",
+            "alpha",
+            "alpha",
+            "email",
+            "string",
+            "string",
+            "alpha",
+            "date_format:n/j/Y",
+            "date_format:n/j/Y", 
+            "integer",
+            "alpha_dash",
+            "alpha_dash",
+            "alpha",
+            "alpha",
+            "integer"
+        ];
         
         const old_data = [
             "{{old('emp_id')}}",
