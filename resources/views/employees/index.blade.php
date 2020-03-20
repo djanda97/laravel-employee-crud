@@ -5,21 +5,26 @@
 @section('tableName', 'Employees')
 
 @section('content')
-    {{-- <style>
-        a { text-decoration: none }
-    </style> --}}
+    <script>
+        const makeRowClickable = (id) => {
+            let row = document.getElementById('employee-' + id);
+            row.addEventListener("click", function() {
+                window.location = "/employees/" + id;
+            });
+        }
+    </script>
 
-    {{-- @if(count($employees) > 0) --}}
-        {{-- <script>
-            // let employees = 
-            const showTable = (employees) => {
-                let table = document.getElementById("employee-table");
-                console.log(employees);
-            }
-        </script> --}}
+    @if(Auth::check())
+        <form action="/employees/create" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-success btn-space float-right">
+                Add Employee
+            </button>
+        </form>
+    @endif
 
+    @if(count($employees) > 0)
          <table class="table table-hover table-bordered" id="employee-table">
-            {{-- <script>showTable({{$employees}})</script> --}}
             <thead>
                 <tr>
                     <th scope="col">First Name</th>
@@ -28,7 +33,7 @@
             </thead>
             <tbody>
                 @foreach($employees as $employee)
-                    <tr>
+                    <tr id="employee-{{$employee->id}}">
                         <td>
                             <a href="/employees/{{$employee->id}}">
                                 {{$employee->first_name}}
@@ -41,19 +46,13 @@
                             </a>
                         </td>
                     </tr>
+                    <script>
+                        makeRowClickable({{$employee->id}})
+                    </script>
                 @endforeach
             </tbody>
         </table>
-    {{-- @else
+    @else
         <p>No employees found.</p>
-    @endif --}}
-
-    <script>
-        let table = document.getElementById("employee-table");
-        for (let i = 0; i < table.rows.length; i++) {
-            table.rows[i].addEventListener("click", function() {
-                location.href = "/employees/{{$employee->id}}";
-            });
-        }
-    </script>
+    @endif
 @endsection

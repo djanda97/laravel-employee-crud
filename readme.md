@@ -34,13 +34,25 @@ We will run the Laravel migration command to setup database tables. This execute
 
 **# docker-compose exec app php artisan migrate**
 
-<!--
-Laravel Authentication
+Interacting With Employee Data
+================
 
-**# docker-compose exec app composer require laravel/ui --dev**
+Generates an Employee model along with a migration file.
+**# docker-compose exec app php artisan make:model Employee -m**
+
+Runs the migration to create the Employee database table.
+**# docker-compose exec app php artisan migrate**
+
+Creates an EmployeeController for CRUD functionality.
+**# docker-compose exec app php artisan make:controller EmployeeController --resource**
+
+Laravel Authentication
+================
+
+**# docker-compose exec app composer require laravel/ui "^1.0" --dev**
 
 **# docker-compose exec app php artisan ui vue --auth**
--->
+
 
 Cleanup
 =======

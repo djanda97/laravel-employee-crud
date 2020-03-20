@@ -7,12 +7,58 @@ use App\Employee;
 
 class EmployeesController extends Controller
 {
+    private $validationRules;
+
+    private function setFields($employee, $request)
+    {
+        $employee->emp_id = $request->input('emp_id');
+        $employee->name_prefix = $request->input('name_prefix');
+        $employee->first_name = $request->input('first_name');
+        $employee->middle_initial = $request->input('middle_initial');
+        $employee->last_name = $request->input('last_name');
+        $employee->gender = $request->input('gender');
+        $employee->email = $request->input('email');
+        $employee->father_name = $request->input('father_name');
+        $employee->mother_name = $request->input('mother_name');
+        $employee->mother_maiden_name = $request->input('mother_maiden_name');
+        $employee->date_of_birth = $request->input('date_of_birth');
+        $employee->date_of_joining = $request->input('date_of_joining');
+        $employee->salary = $request->input('salary');
+        $employee->ssn = $request->input('ssn');
+        $employee->phone_no = $request->input('phone_no');
+        $employee->city = $request->input('city');
+        $employee->state = $request->input('state');
+        $employee->zip = $request->input('zip');
+        $employee->save();
+    }
+
     /**
      * Constructor
      */
-    // public function __construct() {
-    //     $this->middleware('auth')->except(['index', 'show']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        $this->validationRules = [
+            'emp_id' => ['required', 'integer'],
+            'name_prefix' => ['required', 'string'],
+            'first_name' => ['required', 'alpha'],
+            'middle_initial' => ['required', 'alpha', 'max:1'],
+            'last_name' => ['required', 'alpha'],
+            'gender' => ['required', 'alpha', 'max:1'],
+            'email' => ['required', 'email'],
+            'father_name' => ['required', 'string'],
+            'mother_name' => ['required', 'string'],
+            'mother_maiden_name' => ['required', 'alpha'],
+            'date_of_birth' => ['required', 'date_format:n/j/Y'],
+            'date_of_joining' => ['required', 'date_format:n/j/Y'],
+            'salary' => ['required', 'integer'],
+            'ssn' => ['required', 'alpha_dash'],
+            'phone_no' => ['required', 'alpha_dash'],
+            'city' => ['required', 'alpha'],
+            'state' => ['required', 'alpha'],
+            'zip' => ['required', 'integer']
+        ];
+    }
 
     /**
      * Display a listing of the resource.
@@ -44,57 +90,10 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate(([
-            'emp_id' => ['required'],
-            'name_prefix' => ['required'],
-            'first_name' => ['required'],
-            'middle_initial' => ['required'],
-            'last_name' => ['required'],
-            'gender' => ['required'],
-            'email' => ['required'],
-            'father_name' => ['required'],
-            'mother_name' => ['required'],
-            'mother_maiden_name' => ['required'],
-            'date_of_birth' => ['required'],
-            'date_of_joining' => ['required'],
-            'salary' => ['required'],
-            'ssn' => ['required'],
-            'phone_no' => ['required'],
-            'city' => ['required'],
-            'state' => ['required'],
-            'zip' => ['required']
-        ]));
-        
-        // $this->validate($request, [
-
-        // ]);
-
-        return "<pre>" . print_r($request) . "</pre>";
-
-        // return $request->input('emp_id');
-
-        // $employee = new Employee;
-        // $employee->emp_id = $request->input('emp_id');
-        // $employee-> = $request->input('name_prefix');
-        // $employee-> = $request->input('first_name');
-        // $employee-> = $request->input('middle_initial');
-        // $employee-> = $request->input('last_name');
-        // $employee-> = $request->input('gender');
-        // $employee-> = $request->input('email');
-        // $employee-> = $request->input('father_name');
-        // $employee-> = $request->input('mother_name');
-        // $employee-> = $request->input('mother_maiden_name');
-        // $employee-> = $request->input('date_of_birth');
-        // $employee-> = $request->input('date_of_joining');
-        // $employee-> = $request->input('salary');
-        // $employee-> = $request->input('ssn');
-        // $employee-> = $request->input('phone_no');
-        // $employee-> = $request->input('city');
-        // $employee-> = $request->input('state');
-        // $employee-> = $request->input('zip');
-        // $employee->save();
-
-        // return redirect('/employees');
+        $this->validate($request, $this->validationRules);
+        $employee = new Employee;
+        $this->setFields($employee, $request);
+        return redirect('/employees')->with('success', 'Employee Added');
     }
 
     /**
@@ -107,7 +106,6 @@ class EmployeesController extends Controller
     {
         $employee = Employee::find($id);
         return view('employees.show')->with('employee', $employee);
-        // return 'show';
     }
 
     /**
@@ -131,30 +129,10 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         // $employee = Employee::find($id);
-        // $employee->emp_id = $request->input('emp_id');
-        // $employee-> = $request->input('name_prefix');
-        // $employee-> = $request->input('first_name');
-        // $employee-> = $request->input('middle_initial');
-        // $employee-> = $request->input('last_name');
-        // $employee-> = $request->input('gender');
-        // $employee-> = $request->input('email');
-        // $employee-> = $request->input('father_name');
-        // $employee-> = $request->input('mother_name');
-        // $employee-> = $request->input('mother_maiden_name');
-        // $employee-> = $request->input('date_of_birth');
-        // $employee-> = $request->input('date_of_joining');
-        // $employee-> = $request->input('salary');
-        // $employee-> = $request->input('ssn');
-        // $employee-> = $request->input('phone_no');
-        // $employee-> = $request->input('city');
-        // $employee-> = $request->input('state');
-        // $employee-> = $request->input('zip');
-        // $employee->save();
-
-        // return redirect('/employees');
-
-        return 'Successfully editted employee with id: ' . $id;
+        $this->validate($request, $this->validationRules);
+        $employee = Employee::find($id);
+        $this->setFields($employee, $request);
+        return redirect('/employees' . '/' . $id)->with('success', 'Employee Updated');
     }
 
     /**
@@ -167,6 +145,6 @@ class EmployeesController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect('/employees');
+        return redirect('/employees')->with('success', 'Employee Deleted');
     }
 }
