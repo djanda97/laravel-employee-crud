@@ -55,9 +55,9 @@ Seeds the database.
 
 **# docker-compose exec app php artisan db:seed**
 
-Creates an EmployeeController for CRUD functionality.
+Creates an EmployeesController for CRUD functionality.
 
-**# docker-compose exec app php artisan make:controller EmployeeController --resource**
+**# docker-compose exec app php artisan make:controller EmployeesController --resource**
 
 Laravel Authentication
 ======================

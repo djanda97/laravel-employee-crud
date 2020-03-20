@@ -47,7 +47,7 @@
             "zip"
         ];
         
-        let validFormat = [
+        const validFormat = [
             "integer",
             "string",
             "alpha",
