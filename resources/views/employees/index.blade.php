@@ -2,8 +2,6 @@
 
 @section('title', 'Laravel Backend Case Study')
 
-@section('tableName', 'Employees')
-
 @section('content')
     <script>
         const makeRowClickable = (id) => {
@@ -13,6 +11,8 @@
             });
         }
     </script>
+
+    <h3>Employees</h3>
 
     @if(Auth::check())
         <form action="/employees/create" method="GET">

@@ -92,12 +92,19 @@
             }
         </script>
 
-        <form action="/employees/{{$employee->id}}" method="POST" id="employee-form">
+        <form
+            action="/employees/{{$employee->id}}"
+            method="POST"
+            id="employee-form">
             @csrf
             @method("PUT")
             <script>showForm("employee-form")</script>
             <br />
-            <button type="submit" class="btn btn-primary btn-space">Submit</button>
+            <button
+                type="submit"
+                class="btn btn-primary btn-space">
+                Submit
+            </button>
         </form>
     @endif
 @endsection

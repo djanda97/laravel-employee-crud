@@ -22,7 +22,10 @@
                 @csrf
                 @method("DELETE")
                 <input type="hidden" value="{{$employee->id}}" name="id">
-                <button type="button" onclick="confirmDelete()" class="btn btn-danger btn-space float-right">
+                <button
+                    type="button"
+                    onclick="confirmDelete()"
+                    class="btn btn-danger btn-space float-right">
                     Delete
                 </button>
             </form>
@@ -30,7 +33,9 @@
             <form action="/employees/{{$employee->id}}/edit" method="GET">
                 @csrf
                 <input type="hidden" value="{{$employee->id}}" name="id">
-                <button type="submit" class="btn btn-primary btn-space float-right">
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-space float-right">
                     Edit
                 </button>
             </form>
@@ -70,7 +75,9 @@
             }
         </script>
 
-        <table class="table table-hover table-bordered" id="employee-table-detailed">
+        <table
+            class="table table-hover table-bordered"
+            id="employee-table-detailed">
             <script>showTable("employee-table-detailed")</script> 
         </table>
     @else
